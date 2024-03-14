@@ -1,0 +1,73 @@
+@base_url = http://127.0.0.1:3000
+@id_book = 65ef8cf3550a7c52c52a3488
+
+### Obtener libros
+GET {{ base_url }}/books/
+Accept: application/json
+
+### Obtener libros por id
+GET {{ base_url }}/books/{{ id_book }}
+Accept: application/json
+
+### Crear libro
+POST {{ base_url }}/books/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "El señor de los anillos",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasía",
+    "published_date": "1954-07-29"
+}
+
+### Crear varios libros
+POST {{ base_url }}/books/bulk
+Accept: application/json
+Content-Type: application/json
+
+[
+    {
+        "title": "El hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasía",
+        "published_date": "1937-09-21"
+    },
+    {
+        "title": "Cien años de soledad",
+        "author": "Gabriel García Márquez",
+        "genre": "Realismo mágico",
+        "published_date": "1967-05-30"
+    },
+    {
+        "title": "Don Quijote de la Mancha",
+        "author": "Miguel de Cervantes",
+        "genre": "Novela de caballerías",
+        "published_date": "1605-01-16"
+    }
+]
+
+### Actualizar libro
+PUT {{ base_url }}/books/{{ id_book }}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "El señor de los anillos",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasía",
+    "published_date": "1954-07-29"
+}
+
+### Actualizar el título de un libro
+PATCH {{ base_url }}/books/{{ id_book }}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "El señor de los anillos: La comunidad del anillo"
+}
+
+### Eliminar libro
+DELETE {{ base_url }}/books/{{ id_book }}
+Accept: application/json
